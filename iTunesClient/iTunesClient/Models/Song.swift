@@ -27,10 +27,10 @@ extension Song {
             static let isExplicit = "trackExplicitness"
         }
         
-        guard let idValue = json[Key.id] as? Int,
+        guard let idValue = Int(json[Key.id] as? String ?? "0"),
             let nameValue = json[Key.name] as? String,
             let censoredNameValue = json[Key.censoredName] as? String,
-            let trackTimeValue = json[Key.trackTime] as? Int,
+            let trackTimeValue = Int(json[Key.trackTime] as? String ?? "0"),
             let isExplicitString = json[Key.isExplicit] as? String else {
                 return nil
         }

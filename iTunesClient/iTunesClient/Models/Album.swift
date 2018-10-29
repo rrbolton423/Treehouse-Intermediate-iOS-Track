@@ -52,13 +52,13 @@ extension Album {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
-        guard let idValue = json[Key.id] as? Int,
+        guard let idValue = Int(json[Key.id] as? String ?? "0"),
             let artistNameValue = json[Key.artistName] as? String,
             let nameValue = json[Key.name] as? String,
             let censoredNameValue = json[Key.censoredName] as? String,
             let artworkUrlString = json[Key.artworkUrl] as? String,
             let isExplicitValue = json[Key.collectionExplicitness] as? String,
-            let numberOfTracksValue = json[Key.trackCount] as? Int,
+            let numberOfTracksValue = Int(json[Key.trackCount] as? String ?? "0"),
             let releaseDateString = json[Key.releaseDate] as? String,
             let releaseDateValue = formatter.date(from: releaseDateString),
             let primaryGenreString = json[Key.primaryGenre] as? String,
