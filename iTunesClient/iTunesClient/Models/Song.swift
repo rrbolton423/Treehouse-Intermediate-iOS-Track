@@ -30,7 +30,7 @@ extension Song {
         guard let idValue = Int(json[Key.id] as? String ?? "0"),
             let nameValue = json[Key.name] as? String,
             let censoredNameValue = json[Key.censoredName] as? String,
-            let trackTimeValue = Int(json[Key.trackTime] as? String ?? "0"),
+            let trackTimeValue = json[Key.trackTime] as? Int,
             let isExplicitString = json[Key.isExplicit] as? String else {
                 return nil
         }
