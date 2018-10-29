@@ -12,10 +12,11 @@ class SearchResultsController: UITableViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     let dataSource = SearchResultsDataSource()
-
+    let client = ItunesAPIClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissSearchResultsController))
         
         tableView.tableHeaderView = searchController.searchBar
@@ -48,8 +49,12 @@ class SearchResultsController: UITableViewController {
 
 extension SearchResultsController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        dataSource.update(with: [Stub.artist])
-        tableView.reloadData()
+        
+        client.searchForArtists(withTerm: searchController.searchBar.text!) { [weak self] artist, error in
+            self?.dataSource.update(with: artist)
+            self?.tableView.reloadData()
+        }
     }
 }
+
 

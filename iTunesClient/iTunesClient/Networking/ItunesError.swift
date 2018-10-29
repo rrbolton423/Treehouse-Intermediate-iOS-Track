@@ -13,4 +13,5 @@ enum ItunesError: Error {
     case responseUnsuccessful
     case invalidData
     case jsonConversionFailure
+    case jsonParsingFailure(message: String)
 }

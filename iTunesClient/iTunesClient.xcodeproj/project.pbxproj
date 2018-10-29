@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A32F93D0218743C100D2CC78 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32F93CF218743C100D2CC78 /* JSONDownloader.swift */; };
 		A32F93D22187443A00D2CC78 /* ItunesError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32F93D12187443A00D2CC78 /* ItunesError.swift */; };
+		A32F93D4218746EA00D2CC78 /* ItunesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32F93D3218746EA00D2CC78 /* ItunesAPIClient.swift */; };
 		A33F2EAD21862CFB0092094E /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F2EAC21862CFB0092094E /* AlbumDetailController.swift */; };
 		A33F2EAF21862F020092094E /* AlbumDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F2EAE21862F020092094E /* AlbumDetailViewModel.swift */; };
 		A33F2EB1218633270092094E /* AlbumDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F2EB0218633270092094E /* AlbumDetailDataSource.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		A32F93CF218743C100D2CC78 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		A32F93D12187443A00D2CC78 /* ItunesError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesError.swift; sourceTree = "<group>"; };
+		A32F93D3218746EA00D2CC78 /* ItunesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPIClient.swift; sourceTree = "<group>"; };
 		A33F2EAC21862CFB0092094E /* AlbumDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		A33F2EAE21862F020092094E /* AlbumDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewModel.swift; sourceTree = "<group>"; };
 		A33F2EB0218633270092094E /* AlbumDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailDataSource.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				A32F93CF218743C100D2CC78 /* JSONDownloader.swift */,
 				A32F93D12187443A00D2CC78 /* ItunesError.swift */,
+				A32F93D3218746EA00D2CC78 /* ItunesAPIClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				A33F2EB5218634730092094E /* SongViewModel.swift in Sources */,
 				A33F2EAD21862CFB0092094E /* AlbumDetailController.swift in Sources */,
 				A395ACFC2183ACDF00F510F1 /* SearchResultsController.swift in Sources */,
+				A32F93D4218746EA00D2CC78 /* ItunesAPIClient.swift in Sources */,
 				A3CB946A2184C679003BAF0F /* AlbumListController.swift in Sources */,
 				A33F2EB3218633B80092094E /* SongCell.swift in Sources */,
 				A395ACF42183A0E000F510F1 /* Genre.swift in Sources */,
