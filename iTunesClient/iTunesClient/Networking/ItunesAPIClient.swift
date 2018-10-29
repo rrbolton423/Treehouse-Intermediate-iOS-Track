@@ -58,6 +58,34 @@ class ItunesAPIClient {
         }
     }
     
+    func lookupAlbum(withId id: Int, completion: @escaping (Album?, ItunesError?) -> Void) {
+        
+        let endpoint = Itunes.lookup(id: id, entity: MusicEntity.song)
+        
+        performRequest(with: endpoint) { results, error in
+            guard let results = results else {
+                completion(nil, error)
+                return
+            }
+            
+            guard let albumInfo = results.first else {
+                completion(nil, .jsonParsingFailure(message: "Results does not contain album information"))
+                return
+            }
+            
+            guard let album = Album(json: albumInfo) else {
+                completion(nil, .jsonParsingFailure(message: "Could not parse album information"))
+                return
+            }
+            
+            let songResults = results[1..<results.count]
+            let songs = songResults.flatMap { Song(json: $0) }
+            
+            album.songs = songs
+            completion(album, nil)
+        }
+    }
+    
     typealias Results = [[String: Any]]
     
     private func performRequest(with endpoint: Endpoint, completion: @escaping (Results?, ItunesError?) -> Void) {
