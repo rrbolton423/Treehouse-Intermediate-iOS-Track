@@ -2,7 +2,7 @@
 //  AlbumCellViewModel.swift
 //  iTunesClient
 //
-//  Created by Romell Bolton on 10/27/18.
+//  Created by Romell Bolton on 10/29/18.
 //  Copyright © 2018 Romell Bolton. All rights reserved.
 //
 
@@ -14,6 +14,7 @@ struct AlbumCellViewModel {
     let title: String
     let releaseDate: String
     let genre: String
+    
 }
 
 extension AlbumCellViewModel {
@@ -21,7 +22,6 @@ extension AlbumCellViewModel {
         self.artwork = album.artworkState == .downloaded ? album.artwork! : #imageLiteral(resourceName: "AlbumPlaceholder")
         self.title = album.censoredName
         self.genre = album.primaryGenre.name
-        
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         

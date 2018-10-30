@@ -2,7 +2,7 @@
 //  AlbumListController.swift
 //  iTunesClient
 //
-//  Created by Romell Bolton on 10/27/18.
+//  Created by Romell Bolton on 10/29/18.
 //  Copyright © 2018 Romell Bolton. All rights reserved.
 //
 
@@ -12,8 +12,8 @@ class AlbumListController: UITableViewController {
     
     private struct Constants {
         static let AlbumCellHeight: CGFloat = 80
+        
     }
-    
     var artist: Artist? {
         didSet {
             self.title = artist?.name
@@ -21,18 +21,23 @@ class AlbumListController: UITableViewController {
             tableView.reloadData()
         }
     }
-    
+
     lazy var dataSource: AlbumListDataSource = {
-       return AlbumListDataSource(albums: [], tableView: self.tableView)
+        return AlbumListDataSource(albums: [], tableView: self.tableView)
     }()
     
     let client = ItunesAPIClient()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = dataSource
     }
-    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     // MARK: - Table View Delegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -45,10 +50,11 @@ class AlbumListController: UITableViewController {
         if segue.identifier == "showAlbum" {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 let selectedAlbum = dataSource.album(at: selectedIndexPath)
-                
                 let albumDetailController = segue.destination as! AlbumDetailController
                 
                 client.lookupAlbum(withId: selectedAlbum.id) { album, error in
+                    album?.artwork = selectedAlbum.artwork
+                    album?.artworkState = selectedAlbum.artworkState
                     albumDetailController.album = album
                 }
             }

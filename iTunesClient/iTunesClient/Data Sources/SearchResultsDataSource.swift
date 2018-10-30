@@ -2,7 +2,7 @@
 //  SearchResultsDataSource.swift
 //  iTunesClient
 //
-//  Created by Romell Bolton on 10/26/18.
+//  Created by Romell Bolton on 10/29/18.
 //  Copyright © 2018 Romell Bolton. All rights reserved.
 //
 
@@ -10,19 +10,17 @@ import UIKit
 
 class SearchResultsDataSource: NSObject, UITableViewDataSource {
     
-    // Initialize empty array
     private var data = [Artist]()
     
     override init() {
         super.init()
     }
     
-    func update(with artists: [Artist]) {
+    func update(with artists: [Artist]){
         data = artists
     }
     
-    // MARK: - Data Source
-    
+    // MARK: Data Source
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -32,18 +30,15 @@ class SearchResultsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
-        
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
         let artist = data[indexPath.row]
-        cell.textLabel?.text = artist.name
-        
-        return cell
-    }
-    
-    // MARK: - Helper
-    
+            cell.textLabel?.text = artist.name
+            
+            return cell
+        }
+
+    // MARK: - Helper Methods
     func artist(at indexPath: IndexPath) -> Artist {
         return data[indexPath.row]
     }
-
 }

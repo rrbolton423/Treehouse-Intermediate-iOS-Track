@@ -9,10 +9,7 @@
 import Foundation
 
 class PendingOperations {
-    
-    // dictionary that keeps track of operations created and the index paths they are associated with
     var downloadsInProgress = [IndexPath: Operation]()
     
-    // OperationQueue we are adding our Operations to
-    let downloadQueue = OperationQueue()
+    let downloadQueue = OperationQueue() 
 }

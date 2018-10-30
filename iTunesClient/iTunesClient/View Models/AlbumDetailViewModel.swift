@@ -2,13 +2,15 @@
 //  AlbumDetailViewModel.swift
 //  iTunesClient
 //
-//  Created by Romell Bolton on 10/28/18.
+//  Created by Romell Bolton on 10/29/18.
 //  Copyright © 2018 Romell Bolton. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
 struct AlbumDetailViewModel {
+    let artwork: UIImage
     let title: String
     let releaseDate: String
     let genre: String
@@ -16,9 +18,10 @@ struct AlbumDetailViewModel {
 
 extension AlbumDetailViewModel {
     init(album: Album) {
+       
+        self.artwork = album.artworkState == .downloaded ? album.artwork! : #imageLiteral(resourceName: "AlbumPlaceholder") //
         self.title = album.censoredName
         self.genre = album.primaryGenre.name
-        
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         

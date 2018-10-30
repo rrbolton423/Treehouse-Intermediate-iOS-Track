@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 class ArtworkDownloader: Operation {
-    // Provide implementation for the main function
-    // Download album artwork and assign it back to the album
     
     let album: Album
     
@@ -21,7 +19,7 @@ class ArtworkDownloader: Operation {
     }
     
     override func main() {
-        if self.isCancelled {
+        if self.isCancelled  {
             return
         }
         
@@ -29,21 +27,19 @@ class ArtworkDownloader: Operation {
             return
         }
         
-        // Get the data from the URL
         let imageData = try! Data(contentsOf: url)
         
-        // Check if the operation has been cancelled
         if self.isCancelled {
             return
         }
         
-        // If the data is valid...
         if imageData.count > 0 {
             album.artwork = UIImage(data: imageData)
             album.artworkState = .downloaded
-        } else {
-            // Indicate that teh attempt failed
+        }
+        else{
             album.artworkState = .failed
         }
+        
     }
 }
