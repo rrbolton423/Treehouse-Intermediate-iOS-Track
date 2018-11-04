@@ -91,3 +91,18 @@ class CoreDataStack {
     }()
 }
 
+// This method will call save on the Context.
+// It is called only when there are actual changes that need to be saved, very expensive operation.
+extension NSManagedObjectContext {
+    func saveChanges() {
+        if self.hasChanges {
+            do {
+                // Call save on the Context
+                try self.save()
+            } catch {
+                fatalError("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
