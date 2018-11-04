@@ -15,30 +15,13 @@ class TodoListController: UITableViewController {
     let managedObjectContext = CoreDataStack().managedObjectContext
     
     // FetchedResultsController is going to take care of performing the fetch
-    lazy var fetchedResultsController:NSFetchedResultsController<Item> = {
-        
-        // Create the fetch request for the Item type
-        let request: NSFetchRequest<Item> = Item.fetchRequest()
-        
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        return controller
+    lazy var fetchedResultsController:TodoFetchedResultsController = {
+      
+        return TodoFetchedResultsController(managedObjectContext: self.managedObjectContext, tableView: self.tableView)
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("TodoListContoller Context: \(managedObjectContext.description)")
-        
-        // Have this VC be the delegate of the FetchedReusltsController
-        fetchedResultsController.delegate = self
-        
-        // Perform the fetch request in a do / catch block
-        do {
-            // Use the fetchedResultsController to perform the fetch of data
-            try fetchedResultsController.performFetch()
-        } catch {
-            print("Error fetching Item objects: \(error.localizedDescription)")
-        }
     }
     
     // MARK: - Table view data source
@@ -67,6 +50,15 @@ class TodoListController: UITableViewController {
         return configureCell(cell, at: indexPath)
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // Get the item we want to delete and ask the context to delete it
+        let item = fetchedResultsController.object(at: indexPath)
+        managedObjectContext.delete(item)
+        managedObjectContext.saveChanges()
+        
+    }
+    
     private func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) -> UITableViewCell {
         
         // Configure the cell's data
@@ -76,6 +68,11 @@ class TodoListController: UITableViewController {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newItem" {
@@ -83,14 +80,14 @@ class TodoListController: UITableViewController {
             let addTaskController = navigationController.topViewController as! AddTaskController
             
             addTaskController.managedObjectContext = self.managedObjectContext
+        } else if segue.identifier == "showDetail" {
+            guard let detailVC = segue.destination as? DetailViewController, let indexPath = tableView.indexPathForSelectedRow else {
+                return
+            }
+            
+            let item = fetchedResultsController.object(at: indexPath)
+            detailVC.item = item
+            detailVC.context = self.managedObjectContext
         }
-    }
-}
-
-extension TodoListController: NSFetchedResultsControllerDelegate {
-    // Notifies the receiver that the fetched results controller has completed processing of one or more changes due to an add, remove, move, or update.
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // Reload the TableView when change in data occurs
-        tableView.reloadData()
     }
 }

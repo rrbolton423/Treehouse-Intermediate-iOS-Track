@@ -35,6 +35,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="gbn-p3-XRb" kind="show" identifier="showDetail" id="7gc-1T-klb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -96,6 +99,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6U-5Q-EeP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3128.8000000000002" y="26.53673163418291"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="agE-q3-6LF">
+            <objects>
+                <viewController id="gbn-p3-XRb" customClass="DetailViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JCm-ZO-rKk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPU-4z-paJ">
+                                <rect key="frame" x="16" y="318.5" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvF-Da-Rnf">
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="8Ew-Mx-9aU"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteItem:" destination="gbn-p3-XRb" eventType="touchUpInside" id="9j7-My-plt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XPU-4z-paJ" firstAttribute="centerY" secondItem="JCm-ZO-rKk" secondAttribute="centerY" id="7if-IA-4LT"/>
+                            <constraint firstItem="BLK-Ag-pQT" firstAttribute="trailing" secondItem="XPU-4z-paJ" secondAttribute="trailing" constant="16" id="GFM-MJ-PcE"/>
+                            <constraint firstItem="gvF-Da-Rnf" firstAttribute="leading" secondItem="BLK-Ag-pQT" secondAttribute="leading" id="RhM-Pr-xot"/>
+                            <constraint firstItem="BLK-Ag-pQT" firstAttribute="trailing" secondItem="gvF-Da-Rnf" secondAttribute="trailing" id="czm-2T-MWH"/>
+                            <constraint firstItem="BLK-Ag-pQT" firstAttribute="bottom" secondItem="gvF-Da-Rnf" secondAttribute="bottom" id="eHi-6g-fQ9"/>
+                            <constraint firstItem="XPU-4z-paJ" firstAttribute="leading" secondItem="BLK-Ag-pQT" secondAttribute="leading" constant="16" id="yBn-wH-PVo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BLK-Ag-pQT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tyM-5m-XSs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="TLB-yh-09u">
+                            <connections>
+                                <action selector="save:" destination="gbn-p3-XRb" id="a7j-sX-yMw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="detailTextField" destination="XPU-4z-paJ" id="HC6-Af-lUw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tv2-av-LxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2190" y="875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7d4-42-bat">
