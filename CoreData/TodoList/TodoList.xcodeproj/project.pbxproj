@@ -19,6 +19,7 @@
 		A3B7C2D7218BF3B000C9CAA7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B7C2D6218BF3B000C9CAA7 /* CoreDataStack.swift */; };
 		A3C39757218F9C8B00190623 /* TodoFetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C39756218F9C8B00190623 /* TodoFetchedResultsController.swift */; };
 		A3C39759218FA55F00190623 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C39758218FA55F00190623 /* DetailViewController.swift */; };
+		A3FAA456218FEB2600263F94 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FAA455218FEB2600263F94 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A3B7C2D6218BF3B000C9CAA7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A3C39756218F9C8B00190623 /* TodoFetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFetchedResultsController.swift; sourceTree = "<group>"; };
 		A3C39758218FA55F00190623 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A3FAA455218FEB2600263F94 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				A3A64836218E23F20070E511 /* Item+CoreDataProperties.swift */,
 				A3C39756218F9C8B00190623 /* TodoFetchedResultsController.swift */,
 				A3C39758218FA55F00190623 /* DetailViewController.swift */,
+				A3FAA455218FEB2600263F94 /* DataSource.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				A3C39757218F9C8B00190623 /* TodoFetchedResultsController.swift in Sources */,
 				A3B7C2D7218BF3B000C9CAA7 /* CoreDataStack.swift in Sources */,
 				A3B7C2C5218BF39D00C9CAA7 /* AppDelegate.swift in Sources */,
+				A3FAA456218FEB2600263F94 /* DataSource.swift in Sources */,
 				A32F2097218D0A1E000BF726 /* TodoList.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
